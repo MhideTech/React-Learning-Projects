@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const messages = [
   "Learn React ⚛️",
   "Apply for jobs 💼",
@@ -5,14 +7,14 @@ const messages = [
 ];
 
 export default function App() {
-  const step = 1;
+  const [step, setStep] = useState(1);
 
   function handlePrevious() {
-    alert("Previous");
+    if (step > 1) setStep(step - 1);
   }
 
   function handleNext() {
-    alert("Next");
+    if (step < 3) setStep(step + 1);
   }
 
   return (
@@ -23,7 +25,7 @@ export default function App() {
         <div className={`${step >= 3 ? "active" : ""}`}>3</div>
       </div>
 
-      <p className="message">Hello React</p>
+      <p className="message">{`Step ${step}: ${messages[step - 1]}`}</p>
 
       <div className="buttons">
         <button
