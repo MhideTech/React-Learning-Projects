@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function App() {
   return (
     <div className="App">
@@ -41,5 +43,19 @@ const questions = [
 ];
 
 function FlashCards() {
-  return <div>TODO</div>;
+  return (
+    <div className="flashcards">
+      {questions.map((card) => (
+        <Question card={card} />
+      ))}
+    </div>
+  );
+}
+
+function Question({ card }) {
+  return (
+    <div>
+      <p>{card.question}</p>
+    </div>
+  );
 }
