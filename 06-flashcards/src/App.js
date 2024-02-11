@@ -43,19 +43,25 @@ const questions = [
 ];
 
 function FlashCards() {
+  const [selectedId, setSelectedId] = useState(null);
+
+  function handleClick(id) {
+    setSelectedId(id !== selectedId ? id : null);
+  }
+
   return (
     <div className="flashcards">
-      {questions.map((card) => (
-        <Question card={card} />
+      {questions.map((question) => (
+        <div
+          key={question.id}
+          onClick={() => handleClick(question.id)}
+          className={`${selectedId === question.id ? "selected" : ""}`}
+        >
+          <p>
+            {selectedId === question.id ? question.answer : question.question}
+          </p>
+        </div>
       ))}
-    </div>
-  );
-}
-
-function Question({ card }) {
-  return (
-    <div>
-      <p>{card.question}</p>
     </div>
   );
 }
