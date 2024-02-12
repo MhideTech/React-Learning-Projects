@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,7 +9,7 @@ body {
   color: #333;
 }
 
-.row{
+.row {
   width: 300px;
   margin: 30px auto;
   display: flex;
@@ -17,16 +17,28 @@ body {
   align-items: center;
 }
 
-.row > button{
+.row > button {
   width: 30px;
   height: 30px;
   font-size: 1.5rem;
 }
 
-.row > p{
+.row > p {
   font-size: 1.5rem;
 }
 
-h2{
+h2 {
   text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.center button {
+  padding: 8px 15px;
+  font-size: 1.2rem;
 }
