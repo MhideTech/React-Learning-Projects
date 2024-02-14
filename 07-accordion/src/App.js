@@ -33,7 +33,7 @@ function Accordion({ data }) {
           curOpen={curOpen}
           onOpen={setCurOpen}
           title={el.title}
-          num={i}
+          num={i + 1}
           key={i}
         >
           {el.text}
@@ -57,7 +57,7 @@ function Accordion({ data }) {
   );
 }
 
-function AccordionItem({ num, title, text, curOpen, onOpen, children }) {
+function AccordionItem({ num, title, curOpen, onOpen, children }) {
   const isOpen = num === curOpen;
 
   function handleToggle() {
