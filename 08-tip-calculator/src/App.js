@@ -19,13 +19,17 @@ function App() {
   return (
     <div>
       <BillInput bill={bill} onSetBill={setBill} />
+
       <PercentageRating rating={rating} onSetRating={setRating}>
         How did you like the service?
       </PercentageRating>
+
       <PercentageRating rating={frndRating} onSetRating={setFrndRating}>
         How did your friend like the service?
       </PercentageRating>
+
       <TextOutput bill={bill} totalTip={totalTip} totalBill={totalBill} />
+
       <ResetButton reset={resetValues} />
     </div>
   );
