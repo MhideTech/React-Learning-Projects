@@ -71,7 +71,7 @@ function FormAddFriend() {
       <label>👭 Friend name</label>
       <input type="text" />
 
-      <label>🖼 Image URL</label>
+      <label>🌄 Image URL</label>
       <input type="text" />
 
       <button className="button">Add</button>
