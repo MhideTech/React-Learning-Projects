@@ -20,25 +20,44 @@ function App() {
             <span>~</span>
             <span className="name">{author}</span>
           </div>
-          <Buttons onSetQuote={setQuote} onSetAuthor={setAuthor} />
+          <Buttons
+            curQuote={quote}
+            curAuthor={author}
+            onSetQuote={setQuote}
+            onSetAuthor={setAuthor}
+          />
         </div>
       </div>
     </div>
   );
 }
 
-function Buttons({ onSetQuote, onSetAuthor }) {
+function Buttons({ curQuote, curAuthor, onSetQuote, onSetAuthor }) {
+  function playQuote() {
+    let utterance = new SpeechSynthesisUtterance(`${curQuote} by ${curAuthor}`);
+    speechSynthesis.speak(utterance);
+  }
+
+  function copyQuote() {
+    navigator.clipboard.writeText(curQuote);
+  }
+
+  function shareQuote() {
+    const data = { text: curQuote };
+    navigator.share(data);
+  }
+
   return (
     <div className="buttons">
       <div className="features">
         <ul>
-          <li className="sound">
+          <li onClick={playQuote}>
             <i className="fa-solid fa-volume-high"></i>
           </li>
-          <li className="copy">
+          <li onClick={copyQuote}>
             <i className="fa-solid fa-copy"></i>
           </li>
-          <li className="twitter">
+          <li onClick={shareQuote}>
             <i className="fa-solid fa-share-nodes"></i>
           </li>
         </ul>
@@ -49,16 +68,23 @@ function Buttons({ onSetQuote, onSetAuthor }) {
 }
 
 function NewQuoteButton({ onSetQuote, onSetAuthor }) {
+  const [isGenerating, setIsGenerating] = useState(false);
   function fetchQuotes() {
+    setIsGenerating(true);
     fetch("https://quotable.io/random")
       .then((res) => res.json())
       .then((result) => {
         onSetQuote(result.content);
         onSetAuthor(result.author);
+        setIsGenerating(false);
       });
   }
 
-  return <button onClick={fetchQuotes}>New Quotes</button>;
+  return (
+    <button className={isGenerating ? "loading" : ""} onClick={fetchQuotes}>
+      {isGenerating ? "Generating..." : "New Quotes"}
+    </button>
+  );
 }
 
 export default App;
