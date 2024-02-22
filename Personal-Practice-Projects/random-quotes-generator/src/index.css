@@ -9,6 +9,14 @@
   box-sizing: border-box;
 }
 
+.quote-icon {
+  position: fixed;
+  top: 10px;
+  left: 100px;
+  font-size: 10rem;
+  opacity: 0.1;
+}
+
 .app {
   display: flex;
   align-items: center;
