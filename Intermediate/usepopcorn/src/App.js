@@ -93,8 +93,15 @@ function Main({ children }) {
   return <main className="main">{children}</main>;
 }
 
+const KEY = "3e3243b0";
+
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
+  const [movies, setMovies] = useState([]);
+
+  fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`)
+    .then((res) => res.json())
+    .then((data) => setMovies(data.Search));
+
   return (
     <>
       <NavBar>
