@@ -8,8 +8,11 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="quote-icon">
+      <h1 className="quote-icon quote-icon-top">
         <i className="fa-solid fa-quote-left"></i>
+      </h1>
+      <h1 className="quote-icon quote-icon-bottom">
+        <i className="fa-solid fa-quote-right"></i>
       </h1>
       <div className="container">
         <header>Random Quote Generator</header>
