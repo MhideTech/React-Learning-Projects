@@ -98,6 +98,7 @@ const KEY = "3e3243b0";
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedID, setSelectedID] = useState(null);
@@ -108,6 +109,10 @@ export default function App() {
 
   function handleCloseMovie(id) {
     setSelectedID(null);
+  }
+
+  function handleAddWatched(movie) {
+    setWatched((watched) => [...watched, movie]);
   }
 
   useEffect(
@@ -168,12 +173,13 @@ export default function App() {
             <MovieDetails
               selectedID={selectedID}
               onCloseMovie={handleCloseMovie}
+              onAddWatched={handleAddWatched}
             />
           ) : (
             <>
-              <WatchedBox />
-              {/* <WatchedSummary /> */}
-              {/* <WatchedMoviesList /> */}
+              {/* <WatchedBox /> */}
+              <WatchedSummary watched={watched} />
+              <WatchedMoviesList watched={watched} />
             </>
           )}
         </ListBox>
@@ -265,9 +271,10 @@ function WatchedBox() {
   );
 }
 
-function MovieDetails({ selectedID, onCloseMovie }) {
+function MovieDetails({ selectedID, onCloseMovie, onAddWatched }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [userRating, setUserRating] = useState(0)
 
   const {
     Title: title,
@@ -282,7 +289,19 @@ function MovieDetails({ selectedID, onCloseMovie }) {
     Genre: genre,
   } = movie;
 
-  console.log(title, year);
+  function handleAdd() {
+    const newWatchedMovie = {
+      imdbID: selectedID,
+      title,
+      year,
+      poster,
+      imdbRating: Number(imdbRating),
+      runtime: Number(runtime.split(" ").at(0)),
+    };
+
+    onAddWatched(newWatchedMovie);
+    onCloseMovie()
+  }
 
   useEffect(
     function () {
@@ -293,7 +312,6 @@ function MovieDetails({ selectedID, onCloseMovie }) {
         );
 
         const data = await res.json();
-        console.log(data);
         setMovie(data);
         setIsLoading(false);
       }
@@ -328,7 +346,10 @@ function MovieDetails({ selectedID, onCloseMovie }) {
 
           <section>
             <div className="rating">
-              <StarRating size={24} maxRating={10} />
+              <StarRating size={24} maxRating={10} onSetRating={setUserRating} />
+              <button className="btn-add" onClick={handleAdd}>
+                + Add to list
+              </button>
             </div>
             <p>
               <em>{plot}</em>
@@ -385,8 +406,8 @@ function WatchedMoviesList({ watched }) {
 function WatchedMovie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie.poster} alt={`${movie.title} poster`} />
+      <h3>{movie.title}</h3>
       <div>
         <p>
           <span>⭐️</span>
