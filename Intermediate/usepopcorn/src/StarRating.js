@@ -9,7 +9,6 @@ const containerStyle = {
 
 const starContainerStyle = {
   display: "flex",
-  //   gap: "4px",
 };
 
 StarRating.prototype = {
@@ -39,7 +38,7 @@ export default function StarRating({
     fontSize: `${size / 1.5}px`,
   };
 
-  function handleRating() {
+  function handleRating(rating) {
     setRating(rating);
     onSetRating(rating);
   }
