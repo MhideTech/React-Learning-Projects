@@ -35,54 +35,6 @@
         "lng": 13.376933665713324
       },
       "id": "98443197"
-    },
-    {
-      "id": "4f71",
-      "cityName": "Annet-sur-Marne",
-      "country": "France",
-      "emoji": "🇫🇷",
-      "date": "2024-06-14T15:02:34.604Z",
-      "notes": "",
-      "position": {
-        "lat": "48.923208462332624",
-        "lng": "2.7465820312500004"
-      }
-    },
-    {
-      "id": "7db7",
-      "cityName": "Canillo",
-      "country": "Andorra",
-      "emoji": "🇦🇩",
-      "date": "2024-06-14T15:20:06.710Z",
-      "notes": "Lol",
-      "position": {
-        "lat": "42.553911048124",
-        "lng": "1.5820312500000002"
-      }
-    },
-    {
-      "id": "019b",
-      "cityName": "Cluis",
-      "country": "France",
-      "emoji": "🇫🇷",
-      "date": "2024-06-14T15:23:33.154Z",
-      "notes": "France",
-      "position": {
-        "lat": "46.55915050405497",
-        "lng": "1.7358398437500002"
-      }
-    },
-    {
-      "id": "e367",
-      "cityName": "La Bruyere",
-      "country": "Belgium",
-      "emoji": "🇧🇪",
-      "date": "2024-06-14T15:28:35.313Z",
-      "notes": "yo",
-      "position": {
-        "lat": "50.52759033907784",
-        "lng": "4.7900390625"
-      }
     }
   ]
 }
