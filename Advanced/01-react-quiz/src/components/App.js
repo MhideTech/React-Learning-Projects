@@ -1,5 +1,3 @@
-// import DateCounter from "./DateCounter";
-import { act, useEffect, useReducer } from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Loader from "./Loader";
@@ -18,27 +16,25 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* <QuizProvider> */}
-        <Header />
+      <Header />
 
-        <Main>
-          {status === "loading" && <Loader />}
-          {status === "error" && <Error />}
-          {status === "ready" && <StartScreen />}
-          {status === "active" && (
-            <>
-              <Progress />
-              <Question />
-              <Footer>
-                <Timer />
-                <NextButton />
-              </Footer>
-            </>
-          )}
+      <Main>
+        {status === "loading" && <Loader />}
+        {status === "error" && <Error />}
+        {status === "ready" && <StartScreen />}
+        {status === "active" && (
+          <>
+            <Progress />
+            <Question />
+            <Footer>
+              <Timer />
+              <NextButton />
+            </Footer>
+          </>
+        )}
 
-          {status === "finished" && <FinishScreen />}
-        </Main>
-      {/* </QuizProvider> */}
+        {status === "finished" && <FinishScreen />}
+      </Main>
     </div>
   );
 }
