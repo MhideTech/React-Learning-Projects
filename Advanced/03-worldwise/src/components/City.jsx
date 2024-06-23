@@ -1,7 +1,7 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import Spinner from "./Spinner";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useCities } from "../contexts/CitiesContext";
 import BackButton from "./BackButton";
 
