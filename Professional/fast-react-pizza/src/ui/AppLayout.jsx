@@ -8,7 +8,7 @@ function AppLayout() {
       <Header />
 
       <main>
-         <Outlet />
+        <Outlet />
       </main>
 
       <CartOverview />
